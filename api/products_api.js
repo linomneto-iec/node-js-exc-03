@@ -21,7 +21,12 @@ const source = {
 }
 
 products_api.get('/', (req, res) => {
-    res.status(200).json(source.products)
+    knex.select('*').from('product') 
+    .then( products => res.status(200).json(products) ) 
+    .catch(err => { 
+        res.status(500).json({  
+           message: 'error to get products from database -> ' + err.message }) 
+    })
 })
 
 products_api.get('/:id', (req, res) => {
