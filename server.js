@@ -10,9 +10,8 @@ app.use(express.urlencoded({ extended: true }));
  
 app.use('/app', express.static (path.join (__dirname, '/public'))) 
 
-const products_router = require('./api/products') 
-app.use ('/api', products_router) 
-
+const products_router = require('./api/products_api') 
+app.use ('/api/products', products_router) 
 
 let port = process.env.PORT || 3000 
 app.listen (port) 

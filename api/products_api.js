@@ -1,5 +1,5 @@
 const express = require('express')
-let router = express.Router()
+let products_api = express.Router()
 
 const source = {
     products: [
@@ -11,11 +11,11 @@ const source = {
     ]
 }
 
-router.get('/products', (req, res, next) => {
+products_api.get('/', (req, res, next) => {
     res.status(200).json(source.products)
 })
 
-router.get('/products/:id', (req, res, next) => {
+products_api.get('/:id', (req, res, next) => {
     const id = parseInt(req.params.id);
 
     const product = source.products.find(p => p.id === id)
@@ -27,7 +27,7 @@ router.get('/products/:id', (req, res, next) => {
     res.status(200).json(product)
 })
 
-router.post('/products', (req, res, next) => {
+products_api.post('/', (req, res, next) => {
     const payload = req.body
 
     if (!payload || !payload.description || !payload.value || !payload.brand) {
@@ -40,7 +40,7 @@ router.post('/products', (req, res, next) => {
     res.status(201).json({ message: "Product created successfully" })
 })
 
-router.put('/products/:id', (req, res, next) => {
+products_api.put('/:id', (req, res, next) => {
     const id = parseInt(req.params.id);
     const payload = req.body
 
@@ -59,7 +59,7 @@ router.put('/products/:id', (req, res, next) => {
     res.status(200).json({ message: "Product updated successfully" })
 })
 
-router.delete('/products/:id', (req, res, next) => {
+products_api.delete('/:id', (req, res, next) => {
     const id = parseInt(req.params.id);
 
     let idx = source.products.findIndex(p => p.id === id)
@@ -72,4 +72,4 @@ router.delete('/products/:id', (req, res, next) => {
     res.status(204).json({ message: "Product deleted successfully" })
 })
 
-module.exports = router; 
+module.exports = products_api; 
