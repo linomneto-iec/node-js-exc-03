@@ -11,11 +11,11 @@ const source = {
     ]
 }
 
-products_api.get('/', (req, res, next) => {
+products_api.get('/', (req, res) => {
     res.status(200).json(source.products)
 })
 
-products_api.get('/:id', (req, res, next) => {
+products_api.get('/:id', (req, res) => {
     const id = parseInt(req.params.id);
 
     const product = source.products.find(p => p.id === id)
@@ -27,7 +27,7 @@ products_api.get('/:id', (req, res, next) => {
     res.status(200).json(product)
 })
 
-products_api.post('/', (req, res, next) => {
+products_api.post('/', (req, res) => {
     const payload = req.body
 
     if (!payload || !payload.description || !payload.value || !payload.brand) {
@@ -40,7 +40,7 @@ products_api.post('/', (req, res, next) => {
     res.status(201).json({ message: "Product created successfully" })
 })
 
-products_api.put('/:id', (req, res, next) => {
+products_api.put('/:id', (req, res) => {
     const id = parseInt(req.params.id);
     const payload = req.body
 
@@ -59,7 +59,7 @@ products_api.put('/:id', (req, res, next) => {
     res.status(200).json({ message: "Product updated successfully" })
 })
 
-products_api.delete('/:id', (req, res, next) => {
+products_api.delete('/:id', (req, res) => {
     const id = parseInt(req.params.id);
 
     let idx = source.products.findIndex(p => p.id === id)
