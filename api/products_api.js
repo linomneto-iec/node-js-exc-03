@@ -1,6 +1,15 @@
 const express = require('express')
 let products_api = express.Router()
 
+const knex = require('knex')({ 
+    client: 'pg', 
+    debug: true, 
+    connection: { 
+        connectionString : process.env.DATABASE_URL, 
+        ssl: { rejectUnauthorized: false }, 
+      } 
+});
+
 const source = {
     products: [
         { id: 1, description: "Arroz parboilizado 5Kg", value: 25.00, brand: "Tio João" },
