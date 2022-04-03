@@ -9,7 +9,13 @@
 			"name": "Get list of all products",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjQ5MDE4NTE0LCJleHAiOjE2NDkwMjIxMTR9.tMVlr4uU_ADCimmQsN4f31i4Jg5pDC3btCvQNgnMuHc",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "https://linomneto-iec-node-js-exc-03.herokuapp.com/api/products",
 					"protocol": "https",
@@ -30,7 +36,13 @@
 			"name": "Get a product",
 			"request": {
 				"method": "GET",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjQ5MDE4NTE0LCJleHAiOjE2NDkwMjIxMTR9.tMVlr4uU_ADCimmQsN4f31i4Jg5pDC3btCvQNgnMuHc",
+						"type": "text"
+					}
+				],
 				"url": {
 					"raw": "https://linomneto-iec-node-js-exc-03.herokuapp.com/api/products/1",
 					"protocol": "https",
@@ -54,7 +66,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "https://linomneto-iec-node-js-exc-03.herokuapp.com/api/products/3",
+					"raw": "https://linomneto-iec-node-js-exc-03.herokuapp.com/api/products/3?Authorization=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjQ5MDE4NTE0LCJleHAiOjE2NDkwMjIxMTR9.tMVlr4uU_ADCimmQsN4f31i4Jg5pDC3btCvQNgnMuHc",
 					"protocol": "https",
 					"host": [
 						"linomneto-iec-node-js-exc-03",
@@ -65,6 +77,12 @@
 						"api",
 						"products",
 						"3"
+					],
+					"query": [
+						{
+							"key": "Authorization",
+							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjQ5MDE4NTE0LCJleHAiOjE2NDkwMjIxMTR9.tMVlr4uU_ADCimmQsN4f31i4Jg5pDC3btCvQNgnMuHc"
+						}
 					]
 				}
 			},
@@ -74,7 +92,13 @@
 			"name": "Update a product",
 			"request": {
 				"method": "PUT",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjQ5MDE4NTE0LCJleHAiOjE2NDkwMjIxMTR9.tMVlr4uU_ADCimmQsN4f31i4Jg5pDC3btCvQNgnMuHc",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n    \"id\": 1,\n    \"description\": \"Arroz parboilizado 5Kg\",\n    \"value\": \"25\",\n    \"brand\": \"Tio Johnny\"\n}",
@@ -105,7 +129,13 @@
 			"name": "Create a product",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjQ5MDE4NTE0LCJleHAiOjE2NDkwMjIxMTR9.tMVlr4uU_ADCimmQsN4f31i4Jg5pDC3btCvQNgnMuHc",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n    \"description\": \"Ketchup 250ml\",\n    \"value\": 15.2,\n    \"brand\": \"Hellmanns\"\n}",
@@ -136,7 +166,13 @@
 			"name": "Create a user",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjQ5MDE4NTE0LCJleHAiOjE2NDkwMjIxMTR9.tMVlr4uU_ADCimmQsN4f31i4Jg5pDC3btCvQNgnMuHc",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
 					"raw": "{\n    \"name\": \"Lino Antonio Melhado Neto\",\n    \"login\": \"linomneto\",\n    \"pwd\": \"senha123\",\n    \"email\": \"linomneto@gmail.com\"\n}",
@@ -167,10 +203,16 @@
 			"name": "Login",
 			"request": {
 				"method": "POST",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjQ5MDE4NTE0LCJleHAiOjE2NDkwMjIxMTR9.tMVlr4uU_ADCimmQsN4f31i4Jg5pDC3btCvQNgnMuHc",
+						"type": "text"
+					}
+				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\n    \"login\": \"linomneto\",\n    \"pwd\": \"senha123\"\n}",
+					"raw": "{\n    \"login\": \"admin\",\n    \"pwd\": \"senha\"\n}",
 					"options": {
 						"raw": {
 							"language": "json"
