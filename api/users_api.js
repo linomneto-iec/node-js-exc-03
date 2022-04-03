@@ -16,6 +16,11 @@ const knex = require('knex')({
 users_api.post('/', (req, res) => {
     const payload = req.body
 
+    if (!payload || !payload.name || !payload.login || !payload.pwd || !payload.email) {
+        res.status(400).json({ message: "bad user payload" })
+        return
+    }
+
     knex('user')
         .insert({
             name: payload.name,
@@ -39,6 +44,11 @@ users_api.post('/', (req, res) => {
 
 users_api.post('/login', (req, res) => {
     const payload = req.body
+
+    if (!payload || !payload.login || !payload.pwd) {
+        res.status(400).json({ message: "bad login payload" })
+        return
+    }
 
     knex
         .select('*')
