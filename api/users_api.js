@@ -58,7 +58,7 @@ users_api.post('/login', (req, res) => {
             if (users.length) {
                 let user = users[0]
                 if (bcrypt.compareSync(payload.pwd, user.pwd)) {
-                    let token = jwt.sign({ id: usuario.id },
+                    let token = jwt.sign({ id: user.id },
                         process.env.SECRET_KEY, {
                         expiresIn: 3600
                     })
@@ -71,9 +71,8 @@ users_api.post('/login', (req, res) => {
                     })
                     return
                 }
-            } else {
-                res.status(401).json({ message: 'login or password incorrect' })
-            }
+            } 
+            res.status(401).json({ message: 'login or password incorrect' })
         })
         .catch(err => {
             res.status(500).json({
