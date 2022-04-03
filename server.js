@@ -12,5 +12,8 @@ app.use('/app', express.static (path.join (__dirname, '/public')))
 const products_router = require('./api/products_api') 
 app.use ('/api/products', products_router) 
 
+const users_api = require('./api/users_api') 
+app.use ('/api/users', users_api) 
+
 let port = process.env.PORT || 3000 
 app.listen (port) 
