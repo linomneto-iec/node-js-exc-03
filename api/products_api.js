@@ -48,9 +48,9 @@ products_api.post('/', (req, res) => {
 
     knex('product')
         .insert({
-            description: product.description,
-            value: product.value,
-            brand: product.brand,
+            description: payload.description,
+            value: payload.value,
+            brand: payload.brand,
         }, ['id'])
         .then((result) => {
             res.status(201).json({ 
@@ -76,9 +76,9 @@ products_api.put('/:id', (req, res) => {
 
     knex('product')
         .update({
-            description: product.description,
-            value: product.value,
-            brand: product.brand,
+            description: payload.description,
+            value: payload.value,
+            brand: payload.brand,
         })
         .where({ 
             id: id 
