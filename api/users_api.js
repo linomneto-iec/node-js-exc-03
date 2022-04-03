@@ -20,7 +20,7 @@ users_api.post('/', (req, res) => {
         .insert({
             name: payload.name,
             login: payload.login,
-            senha: bcrypt.hashSync(payload.pwd, 8),
+            pwd: bcrypt.hashSync(payload.pwd, 8),
             email: payload.email
         }, ['id'])
         .then((result) => {
