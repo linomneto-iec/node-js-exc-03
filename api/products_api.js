@@ -11,7 +11,47 @@ const knex = require('knex')({
       } 
 });
 
-products_api.get('/', (req, res) => {
+let check_auth = (req, res, next) => {
+    let auth_token = req.headers["authorization"]
+    if (!auth_token) {
+        res.status(401).json({ message: 'required access token' })
+    } else {
+        let token = auth_token.split(' ')[1]
+        jwt.verify(token, process.env.SECRET_KEY, (err, decodeToken) => {
+            if (err) {
+                res.status(401).json({ message: 'access denied'})
+                return
+            }
+            req.user_id = decodeToken.id
+            next()
+        })
+    }
+}
+
+let is_admin = (req, res, next) => {
+    knex
+        .select('*').from('user').where({ id: req.user_id })
+        .then((users) => {
+            if (users.length) {
+                let roles = users[0].roles.split(';')
+                let admin_role = roles.find(i => i === 'ADMIN')
+                if (admin_role === 'ADMIN') {
+                    next()
+                    return
+                } else {
+                    res.status(403).json({ message: 'admin role required' })
+                    return
+                }
+            }
+        })
+        .catch(err => {
+            res.status(500).json({
+                message: 'error to check user role -> ' + err.message 
+            })
+        })
+}
+
+products_api.get('/', check_auth, (req, res) => {
     knex.select('*').from('product') 
         .then( products => res.status(200).json(products) ) 
         .catch(err => { 
@@ -21,7 +61,7 @@ products_api.get('/', (req, res) => {
         })
 })
 
-products_api.get('/:id', (req, res) => {
+products_api.get('/:id', check_auth, (req, res) => {
     const id = parseInt(req.params.id);
 
     knex.select('*').from('product').where({ id: id })
@@ -39,7 +79,7 @@ products_api.get('/:id', (req, res) => {
         })
 })
 
-products_api.post('/', (req, res) => {
+products_api.post('/', check_auth, is_admin, (req, res) => {
     const payload = req.body
 
     if (!payload || !payload.description || !payload.value || !payload.brand) {
@@ -66,7 +106,7 @@ products_api.post('/', (req, res) => {
         })
 })
 
-products_api.put('/:id', (req, res) => {
+products_api.put('/:id', check_auth, is_admin, (req, res) => {
     const id = parseInt(req.params.id)
     const payload = req.body
 
@@ -101,7 +141,7 @@ products_api.put('/:id', (req, res) => {
         })
 })
 
-products_api.delete('/:id', (req, res) => {
+products_api.delete('/:id', check_auth, is_admin, (req, res) => {
     const id = req.params.id
     knex('product')
         .where({ 
