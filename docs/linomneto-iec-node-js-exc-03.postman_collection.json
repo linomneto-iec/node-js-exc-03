@@ -64,9 +64,15 @@
 			"name": "Delete a product",
 			"request": {
 				"method": "DELETE",
-				"header": [],
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjQ5MDE4NTE0LCJleHAiOjE2NDkwMjIxMTR9.tMVlr4uU_ADCimmQsN4f31i4Jg5pDC3btCvQNgnMuHc",
+						"type": "text"
+					}
+				],
 				"url": {
-					"raw": "https://linomneto-iec-node-js-exc-03.herokuapp.com/api/products/3?Authorization=Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjQ5MDE4NTE0LCJleHAiOjE2NDkwMjIxMTR9.tMVlr4uU_ADCimmQsN4f31i4Jg5pDC3btCvQNgnMuHc",
+					"raw": "https://linomneto-iec-node-js-exc-03.herokuapp.com/api/products/3",
 					"protocol": "https",
 					"host": [
 						"linomneto-iec-node-js-exc-03",
@@ -77,12 +83,6 @@
 						"api",
 						"products",
 						"3"
-					],
-					"query": [
-						{
-							"key": "Authorization",
-							"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NSwiaWF0IjoxNjQ5MDE4NTE0LCJleHAiOjE2NDkwMjIxMTR9.tMVlr4uU_ADCimmQsN4f31i4Jg5pDC3btCvQNgnMuHc"
-						}
 					]
 				}
 			},
