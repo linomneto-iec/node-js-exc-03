@@ -52,7 +52,7 @@ users_api.post('/login', (req, res) => {
 
     knex
         .select('*')
-        .from('usuario')
+        .from('user')
         .where({ login: payload.login })
         .then(users => {
             if (users.length) {
