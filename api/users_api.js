@@ -58,7 +58,7 @@ users_api.post('/login', (req, res) => {
             if (users.length) {
                 let user = users[0]
                 if (bcrypt.compareSync(payload.pwd, user.pwd)) {
-                    let jwt = jwt.sign({ id: usuario.id },
+                    let token = jwt.sign({ id: usuario.id },
                         process.env.SECRET_KEY, {
                         expiresIn: 3600
                     })
@@ -67,7 +67,7 @@ users_api.post('/login', (req, res) => {
                         login: user.login,
                         nome: user.name,
                         roles: user.roles,
-                        token: jwt
+                        token: token
                     })
                     return
                 }
